@@ -1,28 +1,5 @@
-<div class="initial">
 
-  <div class="logo">
-    <img width="128" src="assets/logo.jpg">
-  </div>
 
-  <mat-card>Sistema de gerênciamento de ponto da <strong>P21 Sistemas</strong> </mat-card><br />
 
-  <div class="select">
-    <form [formGroup]="lancamentoForm">
-      <h4 class="textSelect">Lançamento</h4>
-      <mat-form-field>
-        <mat-label>Tipo de lançamento</mat-label>
-        <mat-select formControlName="lancamento" name="lancamento">
-          <mat-option *ngFor="let l of lancamentos" [value]="l.value">
-            {{l.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
-  </div><br />
+<router-outlet *ngIf="true"></router-outlet>
 
-  <div class="button-row">
-    <button mat-stroked-button color="primary">Confirmar</button>
-    <button mat-stroked-button color="warn">Cancelar</button>
-  </div>
-
-</div>
