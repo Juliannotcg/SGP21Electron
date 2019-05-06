@@ -1,11 +1,25 @@
-<form [formGroup]="lancamentoForm">
-  <h4>Lançamento</h4>
-  <mat-form-field>
-    <mat-label>Tipo de lançamento</mat-label>
-      <mat-select formControlName="lancamento" name="lancamento">
-        <mat-option *ngFor="let l of lancamentos" [value]="l.value">
-          {{l.viewValue}}
-        </mat-option>
-      </mat-select>
-  </mat-form-field>
-</form>
+<div class="initial">
+  <!-- <figure class="html5">
+  <img src="assets\JULIANNO_Email.png" alt="Tutorial de CSS" title="Logo do CSS" width="150" height="150" />
+  <figcaption>Tutorial de HTML5</figcaption>
+</figure> -->
+  <div class="select">
+    <form [formGroup]="lancamentoForm">
+      <h4>Lançamento</h4>
+      <mat-form-field>
+        <mat-label>Tipo de lançamento</mat-label>
+        <mat-select formControlName="lancamento" name="lancamento">
+          <mat-option *ngFor="let l of lancamentos" [value]="l.value">
+            {{l.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <button mat-button color="primary">
+    Confirmar
+  </button>
+  <button mat-button color="warn">Cancelar</button>
+
+</div>

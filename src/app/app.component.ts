@@ -17,9 +17,10 @@ export class AppComponent {
   lancamentoForm: FormGroup;
   selectedValue: string;
   lancamentos: Lancamentos[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
+    { value: 'steak-0', viewValue: 'Início de turno' },
+    { value: 'pizza-1', viewValue: 'Saída para almoço' },
+    { value: 'tacos-2', viewValue: 'Retorno do almoço' },
+    { value: 'tacos-2', viewValue: 'Fim de turno' }
   ];
 
   constructor(private formBuilder: FormBuilder) {
