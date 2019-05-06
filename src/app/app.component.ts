@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
-export interface Food {
+export interface Lancamentos {
   value: string;
   viewValue: string;
 }
@@ -13,12 +14,21 @@ export interface Food {
 
 export class AppComponent {
   title = 'SGP21';
-
+  lancamentoForm: FormGroup;
   selectedValue: string;
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+  lancamentos: Lancamentos[] = [
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' }
   ];
 
+  constructor(private formBuilder: FormBuilder) {
+    this.lancamentoForm = this.createLancamentoForm();
+  }
+
+  createLancamentoForm() {
+    return this.formBuilder.group({
+      lancamento: [this.lancamentos]
+    });
+  }
 }
