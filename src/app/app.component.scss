@@ -1,17 +1,13 @@
+  
   .logo {
     display: flex;
     align-items: center;
+    text-align: center;
+}
 
-    .logo-icon {
-        width: 24px;
-        height: 24px;
-    }
+button,
+ .mat-icon-button,
+  .mat-stroked-button {
 
-    .logo-text {
-        margin-left: 12px;
-        font-size: 16px;
-        font-weight: 300;
-        letter-spacing: 0.4px;
-        line-height: normal;
-    }
+    margin-right: 10px;
 }
