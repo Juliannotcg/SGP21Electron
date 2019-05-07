@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent} from './login/login-form.component';
 import { LancamentoComponent,  } from './lancamento/lancamento.component';
 import { LancamentoDialog } from './lancamento/lancamento.component-dialog';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
     {
@@ -19,9 +20,13 @@ const appRoutes: Routes = [
         component: LoginFormComponent
     },
     {
+      path        : 'home',
+      component: HomeComponent
+    },
+    {
         path        : '**',
         redirectTo  : 'login'
-    }
+    },
 ];
 
 @NgModule({
@@ -29,7 +34,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginFormComponent,
     LancamentoComponent,
-    LancamentoDialog
+    LancamentoDialog,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
