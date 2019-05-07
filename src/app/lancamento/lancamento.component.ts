@@ -36,6 +36,10 @@ export class LancamentoComponent {
     this.lancamentoForm = this.createLancamentoForm();
   }
 
+  confirmar() {
+    this.openDialog();
+  }
+
   ngOnInit() {
     this.route
       .queryParams
@@ -59,7 +63,7 @@ export class LancamentoComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(LancamentoDialog, {
       width: '350px',
-      data: { nome: this.lancamentoForm.get('username').value }
+      data: { nome: this.nome }
     });
   }
 
