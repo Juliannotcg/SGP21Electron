@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { LancamentoDialog } from './lancamento.component-dialog';
+import { ActivatedRoute } from '@angular/router';
 
 export interface Lancamentos {
   value: string;
@@ -14,9 +16,12 @@ export interface Lancamentos {
 })
 
 export class LancamentoComponent {
+  
+  nome: string;
   title = 'SGP21';
   lancamentoForm: FormGroup;
   selectedValue: string;
+
   lancamentos: Lancamentos[] = [
     { value: 'Inicio', viewValue: 'Início de turno' },
     { value: 'Almoco', viewValue: 'Saída para almoço' },
@@ -24,13 +29,23 @@ export class LancamentoComponent {
     { value: 'FimDeTurno', viewValue: 'Fim de turno' }
   ];
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private route: ActivatedRoute,
+    public dialog: MatDialog,
+    private form: FormBuilder,
     private snackBar: MatSnackBar) {
     this.lancamentoForm = this.createLancamentoForm();
   }
 
+  ngOnInit() {
+    this.route
+        .queryParams
+        .subscribe(params => {
+          this.nome = params['username'];
+        });
+}
+
   createLancamentoForm() {
-    return this.formBuilder.group({
+    return this.form.group({
       lancamento: [this.lancamentos]
     });
   }
@@ -39,6 +54,14 @@ export class LancamentoComponent {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
-   }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LancamentoDialog, {
+      width: '350px',
+      data: { nome: this.lancamentoForm.get('username').value }
+    });
+  }
+
 }
 

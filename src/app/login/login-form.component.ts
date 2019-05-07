@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatSnackBar, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import * as jsPDF from 'jspdf';
-import {Router } from '@angular/router';
+import {Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -11,7 +11,9 @@ import {Router } from '@angular/router';
 })
 
 export class LoginFormComponent {
-  constructor(public dialog: MatDialog) {}
+  
+  constructor(private router: Router,
+    public dialog: MatDialog) {}
   
   form: FormGroup = new FormGroup({
       username: new FormControl('', [Validators.required]),
@@ -33,38 +35,11 @@ export class LoginFormComponent {
       documento.output("dataurlnewwindow");
     }
 
-    openDialog(): void {
-      const dialogRef = this.dialog.open(LoginDialog, {
-        width: '350px',
-        data: {nome: this.form.get('username').value}
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-     
-      });
+    login() {
+      this.router.navigate(['lancamento'],
+      {queryParams: {username: this.form.get("username").value}});
     }
-  }
-
-  @Component({
-    selector: 'login-form.component-dialog',
-    templateUrl: 'login-form.component-dialog.html',
-  })
-  export class LoginDialog {
     
-    nome: string;
-
-    constructor(private router: Router,
-      public dialogRef: MatDialogRef<LoginDialog>,
-      @Inject(MAT_DIALOG_DATA) public data) {
-      }
-  
-    onNoClick(): void {
-      if (this.nome === this.data.nome)
-      {
-        this.router.navigate(['lancamento']);
-        this.dialogRef.close();
-      }
-    }
   }
-  
+
   

@@ -5,8 +5,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {MatSelectModule, MatButtonModule, MatCardModule, MatSnackBarModule, MatInputModule, MatDialogModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginFormComponent, LoginDialog } from './login/login-form.component';
-import { LancamentoComponent } from './lancamento/lancamento.component';
+import { LoginFormComponent} from './login/login-form.component';
+import { LancamentoComponent,  } from './lancamento/lancamento.component';
+import { LancamentoDialog } from './lancamento/lancamento.component-dialog';
 
 const appRoutes: Routes = [
     {
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
     AppComponent,
     LoginFormComponent,
     LancamentoComponent,
-    LoginDialog
+    LancamentoDialog
   ],
   imports: [
     BrowserModule,
@@ -47,6 +48,6 @@ const appRoutes: Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [LoginDialog]
+  entryComponents: [LancamentoDialog]
 })
 export class AppModule { }
