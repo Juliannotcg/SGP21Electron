@@ -21,7 +21,7 @@ import {Router } from '@angular/router';
     onNoClick(): void {
       if (this.nome === this.data.nome)
       {
-        this.router.navigate(['lancamento']);
+        this.router.navigate(['home']);
         this.dialogRef.close();
       }
     }
