@@ -16,7 +16,7 @@ export interface Lancamentos {
 })
 
 export class LancamentoComponent {
-  
+
   nome: string;
   title = 'SGP21';
   lancamentoForm: FormGroup;
@@ -38,11 +38,11 @@ export class LancamentoComponent {
 
   ngOnInit() {
     this.route
-        .queryParams
-        .subscribe(params => {
-          this.nome = params['username'];
-        });
-}
+      .queryParams
+      .subscribe(params => {
+        this.nome = params['username'];
+      });
+  }
 
   createLancamentoForm() {
     return this.form.group({
