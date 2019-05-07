@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import {MatSelectModule, MatButtonModule, MatCardModule, MatSnackBarModule, MatInputModule} from '@angular/material';
+import {MatSelectModule, MatButtonModule, MatCardModule, MatSnackBarModule, MatInputModule, MatDialogModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginFormComponent } from './login/login-form.component';
+import { LoginFormComponent, LoginDialog } from './login/login-form.component';
 import { LancamentoComponent } from './lancamento/lancamento.component';
 
 const appRoutes: Routes = [
@@ -27,7 +27,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginFormComponent,
-    LancamentoComponent
+    LancamentoComponent,
+    LoginDialog
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
 
     FormsModule,
     ReactiveFormsModule,
-
+    MatDialogModule,
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
@@ -46,6 +47,6 @@ const appRoutes: Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AppComponent]
+  entryComponents: [LoginDialog]
 })
 export class AppModule { }
