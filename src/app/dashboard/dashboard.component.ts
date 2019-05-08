@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
 
       seq = 0;
   };
+
   startAnimationForBarChart(chart){
       let seq2: any, delays2: any, durations2: any;
 
@@ -69,9 +70,9 @@ export class DashboardComponent implements OnInit {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+          labels: ['S', 'T', 'Q', 'Q', 'S'],
           series: [
-              [12, 17, 7, 17, 23, 18, 38]
+              [12, 17, 7, 17, 23]
           ]
       };
 

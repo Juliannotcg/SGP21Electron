@@ -1,17 +1,15 @@
 <div class="initial">
 
-    <div class="logo">
-      <img width="128" src="assets/logo.jpg">
-    </div>
-  
-    <mat-card>Sistema de gerênciamento de ponto da <strong>P21 Sistemas</strong> </mat-card><br />
+    <mat-card>Sistema de gerênciamento de ponto 
+          <img width="55" src="assets/logo.jpg">
+     </mat-card><br />
   
     <p>Seja bem vindo <strong>{{nome}}</strong>.</p>
     
     <div class="select">
       <form [formGroup]="lancamentoForm">
         <h4 class="textSelect">Lançamento</h4>
-        <mat-form-field>
+        <mat-form-field class="selectCombo">
           <mat-label>Tipo de lançamento</mat-label>
           <mat-select formControlName="lancamento" name="lancamento"  #message>
             <mat-option *ngFor="let l of lancamentos" [value]="l.value">
