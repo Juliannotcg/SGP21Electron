@@ -4,6 +4,7 @@ export class Usuario
     id: string;
     login: string;
     senha: string;
+    lancamento: Date;
 
     constructor(usuario)
     {
@@ -11,6 +12,7 @@ export class Usuario
             this.id = usuario.id || '';
             this.login = usuario.login || '';
             this.senha = usuario.senha || '';
+            this.lancamento = usuario.lancamento || '';
         }
     }
 }
