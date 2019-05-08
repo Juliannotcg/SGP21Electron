@@ -2,16 +2,20 @@
     <img width="55" src="assets/logo.jpg">
 </mat-card><br />
 
-<mat-card class="relatorio">
-        <div class="span12">
-            <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Selecione a data">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <button mat-stroked-button color="primary" (click)="gerarPDF()">Imprimir</button>
-        </div>
+
+
+<mat-card class="relatorio" fxLayout="row">
+
+    <div fxLayoutAlign="start start" fxFlex="20">
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Selecione a data">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <button mat-stroked-button fx-Flex="calc3Cols" color="primary" (click)="gerarPDF()">Imprimir Relatório</button>
 </mat-card>
+
 
 <div class="main-content">
     <div class="container-fluid">

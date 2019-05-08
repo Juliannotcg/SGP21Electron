@@ -19,6 +19,7 @@ import { LancamentoComponent,  } from './lancamento/lancamento.component';
 import { LancamentoDialog } from './lancamento/lancamento.component-dialog';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const appRoutes: Routes = [
     {
@@ -70,7 +71,9 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
+
+    FlexLayoutModule 
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],

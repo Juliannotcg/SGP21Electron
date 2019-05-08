@@ -1,28 +1,28 @@
 <div class="initial">
 
-    <mat-card>Sistema de gerênciamento de ponto 
-          <img width="55" src="assets/logo.jpg">
-     </mat-card><br />
-  
-    <p>Seja bem vindo <strong>{{nome}}</strong>.</p>
-    
-    <div class="select">
-      <form [formGroup]="lancamentoForm">
-        <h4 class="textSelect">Lançamento</h4>
-        <mat-form-field class="selectCombo">
-          <mat-label>Tipo de lançamento</mat-label>
-          <mat-select formControlName="lancamento" name="lancamento"  #message>
-            <mat-option *ngFor="let l of lancamentos" [value]="l.value">
-              {{l.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
-    </div><br />
-  
-    <div class="button-row">
-      <button mat-stroked-button color="primary" (click)="confirmar()">Confirmar</button>
-      <button mat-stroked-button color="warn" routerLink="/login">Cancelar</button>
-    </div>
-  
-  </div>
+  <mat-card>Sistema de gerênciamento de ponto
+    <img width="55" src="assets/logo.jpg">
+  </mat-card><br />
+
+  <p>Seja bem vindo <strong>{{nome}}</strong>.</p>
+
+</div>
+
+<div fxLayoutAlign="center">
+
+  <form [formGroup]="lancamentoForm">
+    <mat-label>Tipo de lançamento</mat-label>
+    <mat-form-field class="selectCombo">
+      <mat-select formControlName="lancamento" name="lancamento" fxFlex= "200">
+        <mat-option *ngFor="let l of lancamentos" [value]="l.value">
+          {{l.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form><br />
+</div>
+
+<div class="button-row" fxLayoutAlign="center">
+  <button mat-stroked-button color="primary" (click)="confirmar()">Confirmar</button>
+  <button mat-stroked-button color="warn" routerLink="/login">Cancelar</button>
+</div>
