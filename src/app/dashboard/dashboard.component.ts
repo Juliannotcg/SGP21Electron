@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,13 @@ import * as Chartist from 'chartist';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
+
+  gerarPDF() {
+    let documento = new jsPDF();
+    documento.text("Relatório de ponto para teste.", 10, 10);
+    documento.output("dataurlnewwindow");
+  }
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;

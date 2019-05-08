@@ -9,7 +9,10 @@ import {MatSelectModule,
         MatSnackBarModule,
         MatInputModule,
         MatDialogModule,
-        MatTooltipModule} from '@angular/material';
+        MatTooltipModule,
+        MatDatepickerModule,
+        MatCheckboxModule,
+        MatNativeDateModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent} from './login/login-form.component';
 import { LancamentoComponent,  } from './lancamento/lancamento.component';
@@ -64,9 +67,12 @@ const appRoutes: Routes = [
     MatCardModule,
     MatSnackBarModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
   entryComponents: [LancamentoDialog]
 })
