@@ -3,12 +3,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import {MatSelectModule, MatButtonModule, MatCardModule, MatSnackBarModule, MatInputModule, MatDialogModule} from '@angular/material';
+import {MatSelectModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSnackBarModule,
+        MatInputModule,
+        MatDialogModule,
+        MatTooltipModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent} from './login/login-form.component';
 import { LancamentoComponent,  } from './lancamento/lancamento.component';
 import { LancamentoDialog } from './lancamento/lancamento.component-dialog';
 import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
     {
@@ -24,6 +31,10 @@ const appRoutes: Routes = [
       component: HomeComponent
     },
     {
+      path        : 'app-dashboard',
+      component: DashboardComponent
+    },
+    {
         path        : '**',
         redirectTo  : 'login'
     },
@@ -35,7 +46,8 @@ const appRoutes: Routes = [
     LoginFormComponent,
     LancamentoComponent,
     LancamentoDialog,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +56,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
 
     FormsModule,
+    
     ReactiveFormsModule,
     MatDialogModule,
     MatSelectModule,
@@ -51,6 +64,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatSnackBarModule,
     MatInputModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],
