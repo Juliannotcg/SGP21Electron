@@ -20,6 +20,8 @@ import { LancamentoDialog } from './lancamento/lancamento.component-dialog';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LoginService } from './login/login-form.component.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
     {
@@ -28,7 +30,10 @@ const appRoutes: Routes = [
     },  
     {
         path        : 'login',
-        component: LoginFormComponent
+        component: LoginFormComponent,
+        resolve  : {
+          usuarioLogin: LoginService
+        }
     },
     {
       path        : 'home',
@@ -54,6 +59,7 @@ const appRoutes: Routes = [
     DashboardComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     
@@ -75,7 +81,7 @@ const appRoutes: Routes = [
 
     FlexLayoutModule 
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, LoginService],
   bootstrap: [AppComponent],
   entryComponents: [LancamentoDialog]
 })

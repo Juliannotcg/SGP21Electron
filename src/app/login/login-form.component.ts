@@ -1,8 +1,10 @@
+import { UsuarioLogin } from './../model/usuario.model';
 import { Component, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatSnackBar, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import * as jsPDF from 'jspdf';
 import {Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from './login-form.component.service';
 
 @Component({
   selector: 'login',
@@ -11,8 +13,12 @@ import {Router, ActivatedRoute } from '@angular/router';
 })
 
 export class LoginFormComponent {
-  
-  constructor(private router: Router,
+
+  usuarioLogin: UsuarioLogin;
+
+  constructor(
+    public loginService: LoginService,
+    private router: Router,
     public dialog: MatDialog) {}
   
   form: FormGroup = new FormGroup({
@@ -36,6 +42,12 @@ export class LoginFormComponent {
     }
 
     login() {
+
+      this.usuarioLogin.login = this.form.get("username").value;
+      this.usuarioLogin.senha = this.form.get("password").value;
+
+      this.loginService.loginService(this.usuarioLogin);
+
       this.router.navigate(['lancamento'],
       {queryParams: {username: this.form.get("username").value}});
     }
