@@ -44,7 +44,7 @@ export class LancamentoComponent {
     this.route
       .queryParams
       .subscribe(params => {
-        this.nome = params['username'];
+        this.nome = params['login'];
       });
   }
 

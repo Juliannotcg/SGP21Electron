@@ -17,13 +17,14 @@ export class LoginFormComponent {
   usuarioLogin: UsuarioLogin;
 
   constructor(
+    public snackBar: MatSnackBar,
     public loginService: LoginService,
     private router: Router,
     public dialog: MatDialog) {}
   
   form: FormGroup = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      login: new FormControl('', [Validators.required]),
+      senha: new FormControl('', [Validators.required]),
     });
 
     submit() {
@@ -41,15 +42,29 @@ export class LoginFormComponent {
       documento.output("dataurlnewwindow");
     }
 
-    login() {
+    login() 
+    {
+      this.loginService.loginService(this.form.getRawValue()).then(
+        () =>
+        {
+          this.openSnackBar('Conectado.');
+          this.router
+              .navigate(['lancamento'], 
+                        {queryParams: {login: this.form.get("login").value}});
+        }, 
+        () =>
+        {
+          this.openSnackBar('Usuário ou senha inválido.');
+        }
+      );
+    }
 
-      this.usuarioLogin.login = this.form.get("username").value;
-      this.usuarioLogin.senha = this.form.get("password").value;
-
-      this.loginService.loginService(this.usuarioLogin);
-
-      this.router.navigate(['lancamento'],
-      {queryParams: {username: this.form.get("username").value}});
+    openSnackBar(response: any)
+    {
+        this.snackBar.open(response, 'OK',
+        {
+            duration: 3000,
+        });
     }
     
   }

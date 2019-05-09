@@ -30,10 +30,7 @@ const appRoutes: Routes = [
     },  
     {
         path        : 'login',
-        component: LoginFormComponent,
-        resolve  : {
-          usuarioLogin: LoginService
-        }
+        component: LoginFormComponent
     },
     {
       path        : 'home',
