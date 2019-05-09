@@ -22,6 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginService } from './login/login-form.component.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UppercaseDirective } from './uppercase.directive'
 
 const appRoutes: Routes = [
     {
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     LancamentoComponent,
     LancamentoDialog,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    UppercaseDirective
   ],
   imports: [
     HttpClientModule,

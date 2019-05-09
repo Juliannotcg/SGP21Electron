@@ -42,7 +42,7 @@ export class LoginFormComponent {
       documento.output("dataurlnewwindow");
     }
 
-    login() 
+    async login() 
     {
       this.loginService.loginService(this.form.getRawValue()).then(
         () =>

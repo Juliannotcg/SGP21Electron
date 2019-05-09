@@ -11,7 +11,7 @@ export class LoginService{
 
     onSearchTextChanged:  Subject<any> = new Subject();
     searchText: string;
-    baseApi: string = 'https://localhost:44323/api/values';
+    baseApi: string = 'https://localhost:44323/api/Login';
     public usuarioLogin: UsuarioLogin;
 
     constructor(public snackBar: MatSnackBar,
@@ -23,34 +23,7 @@ export class LoginService{
     {
         return new Promise((resolve, reject) => {
             this.http.post(this.baseApi, {...usuarioLogin})
-            .subscribe((response: any) => 
-            {  
-                if (response)
-                    this.snackBar
-                        .open('Conectado com sucesso',
-                            'Ok',
-                            {
-                                panelClass: ['warn'],
-                                verticalPosition: 'top'
-                            }).afterDismissed().subscribe(() => resolve(true), () => reject(false));
-                else
-                    resolve(true);
-            
-            }, error => 
-            {
-                this.snackBar
-                        .open('Usuario ou senha inválido: ' +
-                            error,
-                            'Ok',
-                            {
-                                panelClass: ['warn'],
-                                verticalPosition: 'top'
-                            });
-                reject(false);
-            });
+                .subscribe(resolve, reject);
         });
     }
-
-
-
 }
