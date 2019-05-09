@@ -23,6 +23,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginService } from './login/login-form.component.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UppercaseDirective } from './uppercase.directive'
+import { ToastrModule } from 'ngx-toastr';
+import { LancamentoService } from './lancamento/lancamento.component.service';
 
 const appRoutes: Routes = [
     {
@@ -78,9 +80,10 @@ const appRoutes: Routes = [
     MatNativeDateModule, 
     MatCheckboxModule,
 
-    FlexLayoutModule 
+    FlexLayoutModule,
+    ToastrModule.forRoot() 
   ],
-  providers: [MatDatepickerModule, LoginService],
+  providers: [MatDatepickerModule, LoginService, LancamentoService],
   bootstrap: [AppComponent],
   entryComponents: [LancamentoDialog]
 })

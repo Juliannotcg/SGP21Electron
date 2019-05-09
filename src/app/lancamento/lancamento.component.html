@@ -13,7 +13,7 @@
   <form [formGroup]="lancamentoForm">
     <mat-label>Tipo de lançamento</mat-label>
     <mat-form-field class="selectCombo">
-      <mat-select formControlName="lancamento" name="lancamento" fxFlex= "200">
+      <mat-select formControlName="lancamentoSelect" name="lancamentoSelect" fxFlex= "200">
         <mat-option *ngFor="let l of lancamentos" [value]="l.value">
           {{l.viewValue}}
         </mat-option>

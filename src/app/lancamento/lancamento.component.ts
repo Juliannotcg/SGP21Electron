@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { LancamentoService } from './lancamento.component.service';
+import { Component, Injectable } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { LancamentoDialog } from './lancamento.component-dialog';
 import { ActivatedRoute } from '@angular/router';
+import { Lancamento } from '../model/lancamento.model';
+import { ToastrService } from 'ngx-toastr';
 
 export interface Lancamentos {
   value: string;
@@ -29,14 +32,19 @@ export class LancamentoComponent {
     { value: 'FimDeTurno', viewValue: 'Fim de turno' }
   ];
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private toastr: ToastrService,
+    public lancamentoService: LancamentoService,
+    private route: ActivatedRoute,
     public dialog: MatDialog,
     private form: FormBuilder,
     private snackBar: MatSnackBar) {
+
     this.lancamentoForm = this.createLancamentoForm();
   }
 
   confirmar() {
+    this.inserirLancamento();
     this.openDialog();
   }
 
@@ -48,15 +56,19 @@ export class LancamentoComponent {
       });
   }
 
-  createLancamentoForm() {
-    return this.form.group({
-      lancamento: [this.lancamentos]
+  inserirLancamento(){
+    
+    this.lancamentoService.add(this.lancamentoForm.getRawValue()).then(() => 
+    {
+
     });
+
   }
 
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
+  createLancamentoForm() {
+    return this.form.group({
+      lancamentoSelect: [this.lancamentos],
+      login: this.nome
     });
   }
 
@@ -67,5 +79,9 @@ export class LancamentoComponent {
     });
   }
 
+  showSuccess() {
+    this.toastr.success('Tudo certo meu brother, lançamento efetuado.', 'SHOW!',
+    {timeOut: 2000});;
+  }
 }
 
