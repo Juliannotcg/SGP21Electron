@@ -24,12 +24,13 @@ export class LancamentoComponent {
   title = 'SGP21';
   lancamentoForm: FormGroup;
   selectedValue: string;
+  lancamento: Lancamento;
 
   lancamentos: Lancamentos[] = [
-    { value: 'Inicio', viewValue: 'Início de turno' },
-    { value: 'Almoco', viewValue: 'Saída para almoço' },
-    { value: 'RetornoAlmoço', viewValue: 'Retorno do almoço' },
-    { value: 'FimDeTurno', viewValue: 'Fim de turno' }
+    { value: '1', viewValue: 'Início de turno' },
+    { value: '2', viewValue: 'Saída para almoço' },
+    { value: '3', viewValue: 'Retorno do almoço' },
+    { value: '4', viewValue: 'Fim de turno' }
   ];
 
   constructor(
@@ -58,7 +59,11 @@ export class LancamentoComponent {
 
   inserirLancamento(){
     
-    this.lancamentoService.add(this.lancamentoForm.getRawValue()).then(() => 
+    this.lancamento = new Lancamento();
+    this.lancamento.Login = this.nome;
+    this.lancamento.LanTipo = this.lancamentoForm.get("lancamentoSelect").value;
+
+    this.lancamentoService.add(this.lancamento).then(() => 
     {
 
     });
@@ -67,8 +72,7 @@ export class LancamentoComponent {
 
   createLancamentoForm() {
     return this.form.group({
-      lancamentoSelect: [this.lancamentos],
-      login: this.nome
+      lancamentoSelect: [this.lancamentos]
     });
   }
 
