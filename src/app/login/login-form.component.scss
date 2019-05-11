@@ -32,3 +32,11 @@
     text-align: center;
   }
   
+  .example-header-image {
+    background-image:   url('/assets/p21Logo.png');
+    background-size: cover;
+  }
+
+  .example-card {
+    max-width: 400px;
+  }
