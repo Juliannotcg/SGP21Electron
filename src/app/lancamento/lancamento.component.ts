@@ -46,7 +46,6 @@ export class LancamentoComponent {
 
   confirmar() {
     this.inserirLancamento();
-    this.openDialog();
   }
 
   ngOnInit() {
@@ -57,17 +56,17 @@ export class LancamentoComponent {
       });
   }
 
-  inserirLancamento(){
-    
+  inserirLancamento()
+  {
     this.lancamento = new Lancamento();
     this.lancamento.Login = this.nome;
     this.lancamento.LanTipo = this.lancamentoForm.get("lancamentoSelect").value;
-
-    this.lancamentoService.add(this.lancamento).then(() => 
-    {
-
-    });
-
+    this.lancamentoService.add(this.lancamento).then(
+      () =>{
+        this.showSuccess();
+      }, 
+      () =>{this.showError();}
+    );
   }
 
   createLancamentoForm() {
@@ -85,6 +84,11 @@ export class LancamentoComponent {
 
   showSuccess() {
     this.toastr.success('Tudo certo meu brother, lançamento efetuado.', 'SHOW!',
+    {timeOut: 2000});;
+  }
+  
+  showError() {
+    this.toastr.error('O lançamento não foi registrado, corre atrás disso.', 'Ho, Jesus!',
     {timeOut: 2000});;
   }
 }

@@ -27,16 +27,5 @@ import {Router } from '@angular/router';
         this.router.navigate(['app-dashboard']);
         this.dialogRef.close();
       }
-      this.showSuccess();
-    }
-
-    showSuccess() {
-      this.toastr.success('Tudo certo meu brother, lançamento efetuado.', 'SHOW!',
-      {timeOut: 2000});;
-    }
-
-    showError() {
-      this.toastr.error('O lançamento não foi registrado, corre atrás disso.', 'Ho, Jesus!',
-      {timeOut: 2000});;
     }
   }
