@@ -5,6 +5,7 @@ import { MatSnackBar, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/
 import * as jsPDF from 'jspdf';
 import {Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './login-form.component.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'login',
@@ -17,7 +18,7 @@ export class LoginFormComponent {
   usuarioLogin: UsuarioLogin;
 
   constructor(
-    public snackBar: MatSnackBar,
+    private toastr: ToastrService,
     public loginService: LoginService,
     private router: Router,
     public dialog: MatDialog) {}
@@ -47,26 +48,27 @@ export class LoginFormComponent {
       this.loginService.loginService(this.form.getRawValue()).then(
         () =>
         {
-          this.openSnackBar('Conectado.');
+          this.showSuccess();
           this.router
               .navigate(['lancamento'], 
                         {queryParams: {login: this.form.get("login").value}});
         }, 
         () =>
         {
-          this.openSnackBar('Usuário ou senha inválido.');
+          this.showError();
         }
       );
     }
 
-    openSnackBar(response: any)
-    {
-        this.snackBar.open(response, 'OK',
-        {
-            duration: 3000,
-        });
+    showSuccess() {
+      this.toastr.success('Showde bola, você já pode entrar.', 'CONECTADO!',
+      {timeOut: 2000});;
     }
     
+    showError() {
+      this.toastr.error('Usuário ou senha incorreto, corre atrás disso.', 'Ho, Jesus!',
+      {timeOut: 2000});;
+    }
   }
 
   
